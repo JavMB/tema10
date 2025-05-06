@@ -5,7 +5,7 @@ package Ej3;
  * The type Coche.
  */
 public abstract class Coche {
-    private static final int INCREMENTO = 5;
+    private static final int CONSTANTE = 5;
 
     private final String matricula;
     private double velocidadActual;
@@ -66,18 +66,6 @@ public abstract class Coche {
     }
 
     /**
-     * Sets velocidad actual.
-     *
-     * @param velocidadActual the velocidad actual
-     */
-    public void setVelocidadActual(double velocidadActual) {
-        if (!(velocidadActual < 0) && (velocidadActual < 300)) {
-            this.velocidadActual = velocidadActual;
-        }
-
-    }
-
-    /**
      * Gets marcha actual.
      *
      * @return the marcha actual
@@ -114,9 +102,9 @@ public abstract class Coche {
      * @param pressed the pressed
      */
     public void acelerar(boolean pressed) {
-        velocidadActual += INCREMENTO;
-
-
+        if (!(velocidadActual < 0) && (velocidadActual < 300)) {
+            velocidadActual += CONSTANTE;
+        }
     }
 
     /**
@@ -125,8 +113,8 @@ public abstract class Coche {
      * @param pressed the pressed
      */
     public void frenar(boolean pressed) {
-        if (pressed && velocidadActual > INCREMENTO) {
-            setVelocidadActual(velocidadActual -= INCREMENTO);
+        if (pressed && velocidadActual > CONSTANTE) {
+            velocidadActual -= CONSTANTE;
         }
     }
 

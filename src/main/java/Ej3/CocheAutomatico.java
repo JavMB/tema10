@@ -18,7 +18,6 @@ public class CocheAutomatico extends Coche {
     public void acelerar(boolean pressed) {
         super.acelerar(pressed);
         cambiarMarcha(getMarchaActual());
-
     }
 
     @Override
@@ -40,9 +39,6 @@ public class CocheAutomatico extends Coche {
         }
         setMarchaActual(Marcha.values()[nuevaMarcha]);
     }
-
-
-
 
 
 }

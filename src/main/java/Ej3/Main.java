@@ -20,17 +20,13 @@ public class Main {
         } else {
             c = new CocheAutomatico(matricula, velocidadesMarchas);
         }
+        System.out.println(c.getVelocidadActual());
+        c.acelerar(true);
+        System.out.println(c.getVelocidadActual());
+        c.acelerar(true);
+        System.out.println(c.getVelocidadActual());
+        System.out.println(c.getMarchaActual());
 
-        for (int i = 0; i < 20; i++) {
-            c.acelerar(true);
-            System.out.println(c.getVelocidadActual());
-            System.out.println(c.getMarchaActual());
-
-            if (i == 4) {
-                c.cambiarMarcha(Coche.Marcha.SEGUNDA);
-            }
-
-        }
 
     }
 }

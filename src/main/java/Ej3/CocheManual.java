@@ -17,8 +17,8 @@ public class CocheManual extends Coche {
 
     @Override
     public void acelerar(boolean pressed) {
-        if (pressed && getVelocidadActual() < getVelocidadesMaximas()[getMarchaActual().ordinal()]) {
-            super.acelerar(true);
+        if (getVelocidadActual() < getVelocidadesMaximas()[getMarchaActual().ordinal()]) {
+            super.acelerar(pressed);
         }
     }
 
