@@ -22,7 +22,7 @@ public class Tienda {
     /**
      * Generar catalogo.
      */
-    public void generarCatalogo() {
+    public void generarCatalogo() { //TODO al constructor
         for (int i = 0; i < 10; i++) {
             switch (Rnd.getInt(1, 2)) {
                 case 1 -> catalogo.add(generarLavadoraAleatoria());

@@ -21,7 +21,7 @@ public class Lavadora extends Electrodomestico {
      *
      * @param precio the precio
      * @param peso   the peso
-     */
+     */ //TODO usar this()
     public Lavadora(float precio, float peso) {
         super(precio, peso);
         carga = CARGA;
