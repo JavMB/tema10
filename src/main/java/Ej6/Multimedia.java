@@ -5,9 +5,9 @@ import java.util.Objects;
 
 public abstract class Multimedia {
 
-    private  String titulo;
-    private  String autor;
-    private  Formato formato;
+    private final String titulo;
+    private final String autor;
+    private final Formato formato;
     private final LocalDate year;
 
 
@@ -22,25 +22,16 @@ public abstract class Multimedia {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
 
     public String getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
 
     public Formato getFormato() {
         return formato;
     }
 
-    public void setFormato(Formato formato) {
-        this.formato = formato;
-    }
 
     public LocalDate getYear() {
         return year;
@@ -48,7 +39,7 @@ public abstract class Multimedia {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() +"{" +
+        return getClass().getSimpleName() + "{" +
                 "titulo='" + titulo + '\'' +
                 ", autor='" + autor + '\'' +
                 ", formato=" + formato +

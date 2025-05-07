@@ -66,14 +66,16 @@ public class Tienda {
 
     public boolean devolverMultimediaSocio(String nif, Multimedia m) {
 
+
         List<Alquiler> alquiler = alquileres.get(nif);
         for (Alquiler a : alquiler) {
-            if (a.getMultimedia().equals(m) && !(a.isEntregado()) && a.getFechaEntrega().isAfter(a.getFechaInicio().plusDays(3))
+            if (a.getMultimedia().equals(m) && a.getFechaEntrega().isAfter(a.getFechaInicio().plusDays(3))
             ) {
                 a.getSocio().setVetado(true);
+                a.calcularPrecioRecarga(a.getFechaEntrega(), LocalDate.now());
+
                 return false;
             } else if (a.getMultimedia().equals(m)) {
-                a.setEntregado(true);
                 return true;
             }
         }
@@ -84,9 +86,9 @@ public class Tienda {
         return multimedia.values().toString();
     }
 
-    public String generarListadoPeliculasTitulo() {
-
-    }
+//    public String generarListadoPeliculasTitulo() {
+//          TODO algoritmo ordenacion
+//    }
 
     public String generarListadoVideojuegos() {
         List<Videojuego> video = new ArrayList<>();
@@ -100,8 +102,8 @@ public class Tienda {
         Videojuego tmp;
         for (int i = 1; i < video.size(); i++) {
             for (int j = i - 1; j >= 0; j--) {
-                String tit = video.get(j).getTitulo();
-                if (tit.compareToIgnoreCase(video.get(j + 1).getTitulo()) > 0) {
+                LocalDate lc = video.get(j).getYear();
+                if (lc.isBefore(video.get(j + 1).getYear())) {
                     tmp = video.get(j + 1);
                     video.set(j + 1, video.get(j));
                     video.set(j, tmp);
@@ -121,7 +123,7 @@ public class Tienda {
         StringBuilder sb = new StringBuilder();
 
         for (Alquiler a : alquileres.get(nif)) {
-            if (!a.isEntregado()) {
+            if (a.getPrecioRecarga() <= 0) {
                 sb.append(a).append("\n");
             }
         }

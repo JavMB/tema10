@@ -1,6 +1,7 @@
 package Ej6;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Alquiler {
     private final static int MAX_DIAS = 3;
@@ -10,18 +11,18 @@ public class Alquiler {
     private final Socio socio;
     private final Multimedia multimedia;
     private final float precio;
+    private float precioRecarga;
     private final LocalDate fechaInicio;
     private final LocalDate fechaEntrega;
-    private boolean entregado;
 
 
     public Alquiler(Socio socio, Multimedia multimedia, LocalDate fechaInicio, LocalDate fechaEntrega) {
         this.socio = socio;
         this.multimedia = multimedia;
         this.precio = setPrecioAlquiler(multimedia) + PRECIO_BASE;
+        this.precioRecarga = 0;
         this.fechaInicio = fechaInicio;
         this.fechaEntrega = fechaEntrega;
-        this.entregado = false;
     }
 
     public Socio getSocio() {
@@ -44,12 +45,12 @@ public class Alquiler {
         return fechaEntrega;
     }
 
-    public boolean isEntregado() {
-        return entregado;
+    public float getPrecioRecarga() {
+        return precioRecarga;
     }
 
-    public void setEntregado(boolean entregado) {
-        this.entregado = entregado;
+    public int calcularPrecioRecarga(LocalDate maximo, LocalDate entrega) {
+        return Period.between(maximo, entrega).getDays();
     }
 
     public int setPrecioAlquiler(Multimedia m) {
