@@ -31,9 +31,9 @@ public class Inventario {
         return false;
     }
 
-    public boolean remove(Item item) {
-
-    }
+//    public boolean remove(Item item) {
+//
+//    }
 
 
 }

@@ -1,6 +1,8 @@
 package Ej6;
 
 
+import lib.Algoritmos;
+
 import java.time.LocalDate;
 import java.util.*;
 
@@ -72,8 +74,7 @@ public class Tienda {
             if (a.getMultimedia().equals(m) && a.getFechaEntrega().isAfter(a.getFechaInicio().plusDays(3))
             ) {
                 a.getSocio().setVetado(true);
-                a.calcularPrecioRecarga(a.getFechaEntrega(), LocalDate.now());
-
+                a.setPrecioRecarga(a.calcularPrecioRecarga(a.getFechaEntrega(), LocalDate.now()));
                 return false;
             } else if (a.getMultimedia().equals(m)) {
                 return true;
@@ -86,9 +87,17 @@ public class Tienda {
         return multimedia.values().toString();
     }
 
-//    public String generarListadoPeliculasTitulo() {
-//          TODO algoritmo ordenacion
-//    }
+    public String generarListadoPeliculasTitulo() {
+        List<Pelicula> lista = new ArrayList<>();
+        for (Multimedia m : multimedia.values()) {
+            if (m instanceof Pelicula p) {
+                lista.add(p); // Cast implícito en Java 16+
+            }
+        }
+        lista.sort(Comparator.comparing(Pelicula::getTitulo));
+
+        return lista.toString();
+    }
 
     public String generarListadoVideojuegos() {
         List<Videojuego> video = new ArrayList<>();
@@ -123,7 +132,7 @@ public class Tienda {
         StringBuilder sb = new StringBuilder();
 
         for (Alquiler a : alquileres.get(nif)) {
-            if (a.getPrecioRecarga() <= 0) {
+            if (LocalDate.now().isBefore(a.getFechaEntrega().plusDays(3))) {
                 sb.append(a).append("\n");
             }
         }

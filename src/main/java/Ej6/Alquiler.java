@@ -4,9 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Alquiler {
-    private final static int MAX_DIAS = 3;
     private final static int PRECIO_BASE = 4;
-
 
     private final Socio socio;
     private final Multimedia multimedia;
@@ -47,6 +45,10 @@ public class Alquiler {
 
     public float getPrecioRecarga() {
         return precioRecarga;
+    }
+
+    public void setPrecioRecarga(float precioRecarga) {
+        this.precioRecarga = precioRecarga;
     }
 
     public int calcularPrecioRecarga(LocalDate maximo, LocalDate entrega) {

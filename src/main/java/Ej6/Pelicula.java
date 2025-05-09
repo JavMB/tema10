@@ -2,7 +2,7 @@ package Ej6;
 
 import java.time.LocalDate;
 
-public class Pelicula extends Multimedia {
+public class Pelicula extends Multimedia implements Comparable<Pelicula> {
     private final int duracion;
     private final String actorPrincipal;
     private final String actrizPrincipal;
@@ -32,4 +32,8 @@ public class Pelicula extends Multimedia {
         return String.format(super.toString() + "%s", "{" + "duracion=" + duracion + ", actorPrincipal='" + actorPrincipal + '\'' + ", actrizPrincipal='" + actrizPrincipal + '\'' + '}');
     }
 
+    @Override
+    public int compareTo(Pelicula otra) {
+        return this.getTitulo().compareToIgnoreCase(otra.getTitulo());
+    }
 }

@@ -6,9 +6,9 @@ public class Main {
     }
 
 
-    public Inventario inventarioLleno(){
-
-
-
-    }
+//    public Inventario inventarioLleno(){
+//
+//
+//
+//    }
 }
